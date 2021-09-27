@@ -3,8 +3,6 @@ language: java
 jdk:
   - openjdk16
 
-sudo: false
-
 env:
   global:
     - CODECOV_TOKEN="8c2dddf2-f2b9-454f-801b-3b6586fd9fca"
