@@ -1,0 +1,2 @@
+[![Build Status](https://app.travis-ci.com/starfirst57/job4j_design.svg?branch=master)](https://app.travis-ci.com/starfirst57/job4j_design)
+[![codecov](https://codecov.io/gh/starfirst57/job4j_design/branch/master/graph/badge.svg?token=6URYKCY18Q)](https://codecov.io/gh/starfirst57/job4j_design)
