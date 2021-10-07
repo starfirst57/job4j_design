@@ -15,9 +15,7 @@ public class ListUtils {
         if (list.size() - 1 == index) {
             list.add(value);
         } else {
-            ListIterator<T> iterator = list.listIterator(index);
-            iterator.next();
-            iterator.add(value);
+            list.listIterator(index + 1).add(value);
         }
     }
 
