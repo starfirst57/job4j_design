@@ -1,8 +1,6 @@
 package ru.job4j.set;
 
 import ru.job4j.list.SimpleArrayList;
-
-import java.util.HashSet;
 import java.util.Iterator;
 
 public class SimpleSet<T> implements Set<T> {
@@ -21,10 +19,12 @@ public class SimpleSet<T> implements Set<T> {
     @Override
     public boolean contains(T value) {
         for (T t : this) {
-            if (t == null) {
-                return t == value;
+            if (t != null && t.equals(value)) {
+                return true;
+            } else if (t == value) {
+                return true;
             }
-            return t.equals(value);
+
         }
         return false;
     }

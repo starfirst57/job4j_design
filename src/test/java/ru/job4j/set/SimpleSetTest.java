@@ -25,7 +25,10 @@ public class SimpleSetTest {
     @Test
     public void whenAddStrings() {
         Set<String> set = new SimpleSet<>();
-        assertTrue(set.add("abc"));
+        set.add("abs");
+        set.add(null);
+        set.add("dfe");
+        set.add("abc");
         assertTrue(set.contains("abc"));
         assertFalse(set.add("abc"));
     }
