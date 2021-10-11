@@ -8,7 +8,7 @@ public class SimpleSetTest {
 
     @Test
     public void whenAddNonNull() {
-        Set<Integer> set = new SimpleSet<>();
+        Set<Integer> set = new SimpleSet<Integer>();
         assertTrue(set.add(1));
         assertTrue(set.contains(1));
         assertFalse(set.add(1));
@@ -16,7 +16,7 @@ public class SimpleSetTest {
 
     @Test
     public void whenAddNull() {
-        Set<Integer> set = new SimpleSet<>();
+        Set<Integer> set = new SimpleSet<Integer>();
         assertTrue(set.add(null));
         assertTrue(set.contains(null));
         assertFalse(set.add(null));
@@ -24,7 +24,7 @@ public class SimpleSetTest {
 
     @Test
     public void whenAddStrings() {
-        Set<String> set = new SimpleSet<>();
+        Set<String> set = new SimpleSet<String>();
         set.add("abs");
         set.add(null);
         set.add("dfe");
