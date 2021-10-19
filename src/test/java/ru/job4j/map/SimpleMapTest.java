@@ -84,6 +84,13 @@ public class SimpleMapTest {
             assertTrue(map.iterator().hasNext());
         }
 
+        @Test
+        public void iteratorWithOneElements() {
+            SimpleMap<Integer, String> map = new SimpleMap<>();
+            map.put(1, "Ivan");
+            assertTrue(map.iterator().hasNext());
+        }
+
         @Test(expected = ConcurrentModificationException.class)
         public void whenModificate() {
             SimpleMap<Integer, String> map = new SimpleMap<>();
@@ -91,7 +98,7 @@ public class SimpleMapTest {
             map.put(2, "Boris");
             Iterator<Integer> iterator = map.iterator();
             iterator.next();
-            map.put(3, "Boris");
+            map.put(3, "Andrew");
             iterator.next();
 
         }

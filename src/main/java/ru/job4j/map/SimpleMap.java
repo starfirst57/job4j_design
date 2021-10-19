@@ -37,17 +37,18 @@ public class SimpleMap<K, V> implements Map<K, V> {
 
     @Override
     public boolean put(K key, V value) {
-        if ((float) count / capacity >= LOAD_FACTOR) {
+        if (count / capacity >= LOAD_FACTOR) {
             expand();
         }
+        var rsl = false;
         var index = indexFor(hash(key.hashCode()));
-        if (table[index] != null) {
-            return false;
+        if (table[index] == null) {
+            table[index] = new MapEntry<>(key, value);
+            count++;
+            modCount++;
+            rsl = true;
         }
-        table[index] = new MapEntry<>(key, value);
-        count++;
-        modCount++;
-        return true;
+        return rsl;
     }
 
     @Override
@@ -58,14 +59,15 @@ public class SimpleMap<K, V> implements Map<K, V> {
 
     @Override
     public boolean remove(K key) {
+        var rsl = false;
         var index = indexFor(hash(key.hashCode()));
         if (table[index] != null && table[index].getKey().equals(key)) {
             table[index] = null;
             count--;
             modCount++;
-            return true;
+            rsl = true;
         }
-        return false;
+        return rsl;
     }
 
     @Override
@@ -73,14 +75,13 @@ public class SimpleMap<K, V> implements Map<K, V> {
         return new Iterator<>() {
             private final int expectedModCount = modCount;
             int point = 0;
-            int elements = 0;
 
             @Override
             public boolean hasNext() {
                 if (expectedModCount != modCount) {
                     throw new ConcurrentModificationException();
                 }
-                return point < capacity && elements < count;
+                return point < capacity && count > 0;
             }
 
             @Override
@@ -90,11 +91,8 @@ public class SimpleMap<K, V> implements Map<K, V> {
                 }
                 MapEntry<K, V> element = table[point];
                 point++;
-                if (element != null) {
-                    elements++;
-                    return element.getKey();
-                }
-                return next();
+
+                return element == null ? next() : element.getKey();
             }
         };
     }
