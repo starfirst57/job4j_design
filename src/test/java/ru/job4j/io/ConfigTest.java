@@ -11,7 +11,7 @@ public class ConfigTest {
         String path = "./data/pair_without_comment.properties";
         Config config = new Config(path);
         config.load();
-        assertEquals(config.value("name"),"Petr Arsentev");
+        assertEquals(config.value("name"), "Petr Arsentev");
     }
 
     @Test
@@ -19,7 +19,7 @@ public class ConfigTest {
         String path = "./data/pair_with_comment.properties";
         Config config = new Config(path);
         config.load();
-        assertEquals(config.value("name"),"Petr Arsentev");
+        assertEquals(config.value("name"), "Petr Arsentev");
     }
 
     @Test
@@ -43,7 +43,7 @@ public class ConfigTest {
         String path = "./data/two_pairs_with_comment.properties";
         Config config = new Config(path);
         config.load();
-        assertEquals(config.value("name"),"Petr Arsentev");
-        assertEquals(config.value("login"),"test");
+        assertEquals(config.value("name"), "Petr Arsentev");
+        assertEquals(config.value("login"), "test");
     }
 }
