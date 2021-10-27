@@ -37,4 +37,18 @@ public class ConfigTest {
         assertEquals(config.value("name"), "Petr Arsentev");
         assertEquals(config.value("login"), "test");
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void whenNoArgument() {
+        String path = "./data/exception.properties";
+        Config config = new Config(path);
+        config.load();
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void whenTwoEquals() {
+        String path = "./data/two_equals.properties";
+        Config config = new Config(path);
+        config.load();
+    }
 }
