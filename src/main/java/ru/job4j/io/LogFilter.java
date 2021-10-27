@@ -3,13 +3,17 @@ package ru.job4j.io;
 import java.io.*;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class LogFilter {
     public static List<String> filter(String file) {
         List<String> temp = new LinkedList<>();
         try (BufferedReader in = new BufferedReader(new FileReader(file))) {
-            temp = in.lines().filter(line -> line.contains("404")).collect(Collectors.toList());
+            temp = in.lines().map(line -> line.split(" "))
+                    .filter(line -> Objects.equals(line[line.length - 2], "404"))
+                    .map(line -> String.join(" ", line))
+                    .collect(Collectors.toList());
         } catch (Exception e) {
             e.printStackTrace();
         }
