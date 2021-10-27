@@ -3,10 +3,7 @@ package ru.job4j.io;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.StringJoiner;
-
+import java.util.*;
 
 public class Config {
 
@@ -19,10 +16,18 @@ public class Config {
 
     public void load() {
         try (BufferedReader read = new BufferedReader(new FileReader(this.path))) {
-            read.lines().filter(line -> line.contains("=") && !line.startsWith("#") && !line.endsWith("="))
-                    .map(line -> line.split("=")).forEach(line -> values.put(line[0], line[1]));
+            read.lines().filter(line -> !line.startsWith("#")).peek(line -> {
+                        if (!line.matches("^[a-zA-Z+. ]+[=][^ ][a-zA-Z+. ]+$")) {
+                            throw new IllegalArgumentException("");
+                        }
+                    })
+                    .map(line -> line.split("="))
+                    .forEach(line -> values.put(line[0], line[1]));
+
+        } catch (IllegalArgumentException ill) {
+          throw ill;
         } catch (Exception e) {
-            e.printStackTrace();
+             e.printStackTrace();
         }
     }
 
@@ -42,7 +47,7 @@ public class Config {
     }
 
     public static void main(String[] args) {
-        Config conf = new Config("app.properties");
+        Config conf = new Config("./data/no_pairs.properties");
         conf.load();
         System.out.println(conf.values);
 

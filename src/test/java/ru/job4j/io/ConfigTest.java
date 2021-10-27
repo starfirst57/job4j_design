@@ -11,7 +11,7 @@ public class ConfigTest {
         String path = "./data/pair_without_comment.properties";
         Config config = new Config(path);
         config.load();
-        assertEquals(config.value("name"), "Petr Arsentev");
+        assertEquals("Petr Arsentev", config.value("name"));
     }
 
     @Test
@@ -19,23 +19,14 @@ public class ConfigTest {
         String path = "./data/pair_with_comment.properties";
         Config config = new Config(path);
         config.load();
-        assertEquals(config.value("name"), "Petr Arsentev");
+        assertEquals("Petr Arsentev", config.value("name"));
     }
 
-    @Test
+    @Test(expected = IllegalArgumentException.class)
     public void whenNoPairs() {
         String path = "./data/no_pairs.properties";
         Config config = new Config(path);
         config.load();
-        assertNull(config.value("name"));
-    }
-
-    @Test
-    public void whenNoPairsWithComments() {
-        String path = "./data/no_pairs_with_comments.properties";
-        Config config = new Config(path);
-        config.load();
-        assertNull(config.value("name"));
     }
 
     @Test
