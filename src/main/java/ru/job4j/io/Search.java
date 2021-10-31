@@ -9,8 +9,19 @@ import java.util.function.Predicate;
 
 public class Search {
     public static void main(String[] args) throws IOException {
-        Path start = Paths.get("C:\\projects");
-        search(start, p -> p.toFile().getName().endsWith("js")).forEach(System.out::println);
+        if (args.length != 2) {
+            throw new IllegalArgumentException("Wrong number of parameters. Usage java -jar dir.jar ROOT_FOLDER FILE_TYPE");
+        }
+        System.out.println(args[0]);
+        System.out.println(args[1]);
+        if (!args[0].matches("^[A-Z][:].+")) {
+            throw new IllegalArgumentException("ROOT_FOLDER example C:example/");
+        }
+        if (!args[1].matches("^[a-zA-Z0-9]+$")) {
+            throw new IllegalArgumentException("FILE_TYPE example txt");
+        }
+        Path start = Paths.get(args[0]);
+        search(start, p -> p.toFile().getName().endsWith(args[1])).forEach(System.out::println);
     }
 
     public static List<Path> search(Path root, Predicate<Path> condition) throws IOException {
