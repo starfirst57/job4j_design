@@ -33,9 +33,6 @@ public class Search {
         if (!Path.of(args[0]).toFile().isDirectory()) {
             throw new IllegalArgumentException("Not a directory");
         }
-        if (args[1] == null) {
-            throw new IllegalArgumentException("File type is null");
-        }
         return true;
     }
 }
