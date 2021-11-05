@@ -17,7 +17,7 @@ public class ArgsName {
             throw new IllegalArgumentException("empty arguments");
         }
         Arrays.stream(args).filter(line -> !line.startsWith("#")).peek(line -> {
-                        if (!line.matches("^[-][a-zA-Z+. ]*[=]?[a-zA-Z0-9-+.: /]+$")) {
+                        if (!line.matches("^[-][a-zA-Z+. ]*[=]{1}[a-zA-Z0-9-+.: /]+$")) {
                             throw new IllegalArgumentException("incorrect argument " + line);
                         }
                     })
