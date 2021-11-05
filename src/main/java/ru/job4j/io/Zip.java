@@ -34,7 +34,7 @@ public class Zip {
 
     public static void main(String[] args) throws IOException {
        ArgsName arguments = ArgsName.of(args);
-       List<Path> files = Search.search(Path.of(arguments.get("d")), p -> p.toFile().getName().endsWith(arguments.get("e")));
+       List<Path> files = Search.search(Path.of(arguments.get("d")), p -> !p.toFile().getName().endsWith(arguments.get("e")));
        packFiles(files, new File(arguments.get("o")));
     }
 }
