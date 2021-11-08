@@ -2,6 +2,7 @@ package ru.job4j.io;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -19,24 +20,38 @@ public class ConsoleChat {
         this.botAnswers = botAnswers;
     }
 
-    public void run() throws IOException {
+    public void run() {
         List<String> phrases = readPhrases(botAnswers);
+        List<String> chat = new ArrayList<>();
+
         boolean end = false;
         boolean pause = false;
-        try (FileWriter out = new FileWriter(new File(path))) {
-            while (!end) {
-                Scanner in = new Scanner(System.in);
-                String temp = in.nextLine();
-                if (temp.equals(OUT)) {
-                    end = true;
-                }
-                if ()
-                System.out.println(temp);
-                out.write(temp);
+
+        while (!end) {
+            Scanner console = new Scanner(System.in);
+            String temp = console.nextLine();
+            chat.add(temp);
+            if (temp.contains(OUT)) {
+                end = true;
+                continue;
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+            if (temp.contains(STOP)) {
+                pause = true;
+                continue;
+            }
+
+            if (temp.contains(CONTINUE)) {
+                pause = false;
+                continue;
+            }
+
+            if (!pause) {
+                int rand = (int) (Math.random() * phrases.size());
+                chat.add(phrases.get(rand));
+                System.out.println(phrases.get(rand));
+            }
         }
+        saveLog(chat);
     }
 
     private List<String> readPhrases(String botAnswers) {
@@ -50,11 +65,20 @@ public class ConsoleChat {
     }
 
     private void saveLog(List<String> log) {
+        try (FileWriter out = new FileWriter(Path.of(path).toFile(), StandardCharsets.UTF_8)) {
+            for (String line: log) {
+                out.write(line + "\n");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
 
     }
 
     public static void main(String[] args) {
-        ConsoleChat cc = new ConsoleChat("", "");
+        ConsoleChat cc = new ConsoleChat("./log.txt", "./duplicate.txt");
         cc.run();
     }
 }
