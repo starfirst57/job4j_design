@@ -19,13 +19,13 @@ public class CSVReader {
                                 headerIndexes[i] = j;
                             }
                         }
-                            out.write((columns[i] + (columns.length - i > 1? argsName.get("delimiter"): "")).getBytes());
+                            out.write((columns[i] + (columns.length - i > 1 ? argsName.get("delimiter") : "")).getBytes());
                     }
                         out.write(System.lineSeparator().getBytes());
                     while (scanner.hasNext()) {
                         String[] line = scanner.nextLine().split(argsName.get("delimiter"));
                         for (int i = 0; i < headerIndexes.length; i++) {
-                            out.write((line[headerIndexes[i]] + (headerIndexes.length - i > 1? argsName.get("delimiter"): "")).getBytes());
+                            out.write((line[headerIndexes[i]] + (headerIndexes.length - i > 1 ? argsName.get("delimiter") : "")).getBytes());
                         }
                         out.write(System.lineSeparator().getBytes());
                     }
