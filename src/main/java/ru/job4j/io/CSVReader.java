@@ -19,7 +19,7 @@ public class CSVReader {
                                 headerIndexes[i] = j;
                             }
                         }
-                            out.write((columns[i] + (columns.length - i > 1 ? argsName.get("delimiter") : "")).getBytes());
+                            out.write((columns[i] + (columns.length - i > 1 ? argsName.get("delimiter")  : "")).getBytes());
                     }
                         out.write(System.lineSeparator().getBytes());
                     while (scanner.hasNext()) {
