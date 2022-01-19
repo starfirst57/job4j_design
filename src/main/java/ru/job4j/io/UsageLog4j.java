@@ -16,8 +16,8 @@ public class UsageLog4j {
         long number = 56465;
         boolean isClosed = true;
         byte j = 16;
-        LOG.debug("i = {}, price = {}, amount = {}, item = {}, a = {}, number = {}, isClosed = {}, j = {}"
-                 , i, price, amount, item, a, number, isClosed, j);
+        LOG.debug("i = {}, price = {}, amount = {}, item = {}, a = {}, number = {}, isClosed = {}, j = {}",
+                i, price, amount, item, a, number, isClosed, j);
 
     }
 }
