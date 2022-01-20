@@ -11,7 +11,7 @@ public class CSVReader {
             String[] header = scanner.nextLine().split(argsName.get("delimiter"));
             int[] headerIndexes = new int[columns.length];
 
-            if (!argsName.get("out").equals("stdout")) {
+            if (!("stdout").equals(argsName.get("out"))) {
                 try (FileOutputStream out = new FileOutputStream(argsName.get("out"))) {
                     for (int i = 0; i < columns.length; i++) {
                         for (int j = 0; j < header.length; j++) {
