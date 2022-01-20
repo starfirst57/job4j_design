@@ -34,12 +34,10 @@ public class EchoServer {
                         }
                     }
                     out.flush();
-                }  catch (Exception e) {
-                    LOG.error("Can`t write data", e);
                 }
             }
         } catch (Exception e) {
-            LOG.error("Can`t read data", e);
+            LOG.error("Something going wrong", e);
         }
     }
 }
