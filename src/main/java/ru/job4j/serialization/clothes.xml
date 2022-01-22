@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<item type="shirt" unisex="true" name="Expensive shirt" price="1700">
+    <brand name="gucci"/>
+    <colors>
+        <color>red</color>
+        <color>blue</color>
+        <color>black</color>
+    </colors>
+</item>
