@@ -30,7 +30,7 @@ public class Apartment implements Serializable {
                 + ", square=" + square
                 + ", hasBalcony=" + hasBalcony
                 + ", ownerContact=" + ownerContact
-                + ", photos=" + Arrays.toString(photos) +
-                '}';
+                + ", photos=" + Arrays.toString(photos)
+                + '}';
     }
 }
