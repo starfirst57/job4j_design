@@ -11,7 +11,7 @@ public class Apartment implements Serializable {
     private final Contact ownerContact;
     private final String[] photos;
 
-    public Apartment (String address, int flat, float square,
+    public Apartment(String address, int flat, float square,
                       boolean hasBalcony, Contact ownerContact, String[] photos) {
         this.address = address;
         this.flat = flat;
