@@ -22,6 +22,30 @@ public class Apartment implements Serializable {
 
     }
 
+    public String getAddress() {
+        return address;
+    }
+
+    public int getFlat() {
+        return flat;
+    }
+
+    public float getSquare() {
+        return square;
+    }
+
+    public boolean isHasBalcony() {
+        return hasBalcony;
+    }
+
+    public Contact getOwnerContact() {
+        return ownerContact;
+    }
+
+    public String[] getPhotos() {
+        return photos;
+    }
+
     @Override
     public String toString() {
         return "Apartment{"
